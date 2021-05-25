@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.themeleaf.org">
+	<head>
+		<title>个险销售支持系统</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="viewport-fit=cover, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		    <!--[if lt IE 9]>
+		      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		 <![endif]-->
+		<!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
+		<link rel="stylesheet" th:href="@{/script/lib/bootstrap/css/bootstrap.min.css}" />
+		<link rel="stylesheet" th:href="@{/script/lib/bootstrap/css/bootstrap-select.min.css}" />
+		<link rel="stylesheet" th:href="@{/script/lib/bootstrap/css/bootstrap-table.min.css}" />
+		<link rel="stylesheet" th:href="@{/script/lib/bootstrap/css/bootstrap-switch.min.css}" />
+		<link rel="stylesheet" th:href="@{/script/lib/bootstrap/css/bootstrap-datetimepicker.min.css}" />
+		<link rel="stylesheet" th:href="@{/css/index.css}" />
+		<link rel="stylesheet" th:href="@{/css/common.css}" />
+		<link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/script/lib/selectMenu/css/selectmenu.css}"/>
+		<!--<link rel="stylesheet" th:href="@{/script/lib/swiper/css/swiper.min.css}" />-->
+		<link rel="stylesheet" th:href="@{/script/lib/swiper/css/idangerous.swiper.css}" />
+		<link rel="stylesheet" th:href="@{/script/lib/pagination/pagination.css}"/>
+		<script type="text/javascript" th:src="@{/script/lib/jquery/jquery-1.12.3.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/jquery/reples.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap-select.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap-switch.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap-table.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap-table-zh-CN.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap-datetimepicker.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js}" ></script>
+		<!-- <script type="text/javascript" th:src="@{/script/lib/bootstrap/js/moment-with-locales.min.js}" ></script> -->
+		<script type="text/javascript" th:src="@{/script/lib/verify/verify.js}"></script>
+		<script type="text/javascript" th:src="@{/script/lib/qrcode/qrcode.min.js}"></script>
+		<script type="text/javascript" th:src="@{/selectMenu/js/selectmenu.js}"></script>
+		<script type="text/javascript" th:src="@{/script/lib/swiper/js/idangerous.swiper2.7.6.js}"></script>
+		<script type="text/javascript" th:src="@{/script/lib/pagination/jquery.pagination.js}"></script>
+		<script type="text/javascript" th:src="@{/script/lib/jquery/respond.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/jquery/base64.js}" ></script>
+		<script type="text/javascript" th:src="@{/script/lib/Echarts/echarts.min.js}" ></script>
+		<script>
+            (function (doc, win) {
+                var docEl = doc.documentElement;
+                var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+                var recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth<=1152){
+                        docEl.style.fontSize = '80px';
+					}
+					else if(clientWidth>1440){
+                        docEl.style.fontSize = "100px";
+					}
+					else{
+                        docEl.style.fontSize = 100 * (clientWidth / 1440) + 'px';
+					}
+                };
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            })(document, window);
+		</script>
+	</head>
+	<body>
+<!-- ，。局Loading -->
+		<div class="global-loading-shadow" id="global-loading-shadow">
+			<div class="global-loading">
+				<p id="global-loading-close" style="display:none;position: absolute;right: -10px;top: -10px;font-size: 20px;width: 30px;line-height: 30px;height: 30px;background: #fff;border-radius: 100%;cursor: pointer;">&times;</p>
+				<div class='uil-default-css' style='transform:scale(1);-webkit-transform: scale(1);'>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(0deg) translate(0,-.16rem);transform:rotate(0deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(30deg) translate(0,-.16rem);transform:rotate(30deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(60deg) translate(0,-.16rem);transform:rotate(60deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(90deg) translate(0,-.16rem);transform:rotate(90deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(120deg) translate(0,-.16rem);transform:rotate(120deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(150deg) translate(0,-.16rem);transform:rotate(150deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(180deg) translate(0,-.16rem);transform:rotate(180deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(210deg) translate(0,-.16rem);transform:rotate(210deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(240deg) translate(0,-.16rem);transform:rotate(240deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(270deg) translate(0,-.16rem);transform:rotate(270deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(300deg) translate(0,-.16rem);transform:rotate(300deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+					<div style='margin-left:-.03rem; top:.16rem;left:50%;width:.04rem;height:.12rem;background:#e5150b;-webkit-transform:rotate(330deg) translate(0,-.16rem);transform:rotate(330deg) translate(0,-.16rem);border-radius:.04rem;position:absolute;'></div>
+				</div>
+				<p>正在处理,请稍候...</p>
+			</div>
+		</div>
+		<!-- 全局遮罩层 -->
+		<div class="global-shadow" id="global-shadow"></div>
+		<!--弹窗页-->
+		<div class="global-layer" id="global-layer"></div>
+		<!-- 头部 -->
+		<div class="header" id="global-header">
+			<!--顶部信息-->
+			<div class="header-top container">
+				<div class="row">
+					<div class="flt-l">
+						<span class="logo inbk fs-20 "><img  src="./resources/img/icon/logo.png"></span>
+					</div>
+					<nav class="navbar-default flt-l" role="navigation">
+						
+							<div>
+								<ul class="nav navbar-nav">
+									 <!--<li ><a href="javascript:;" class="home active text-center">首页</a></li>
+									<li><a href="javascript:;" class="customer-home text-center" >客户管理</a></li>
+									<li><a href="javascript:;" class="suggest-home text-center" >建议书管理</a></li> -->
+								</ul>
+							</div>
+						
+					</nav>
+					
+					<ul class="flt-r list-inline text-right mgl-25 fs-0">
+						<div class="online flt-l mgl-10 clearfix mgr-30">
+							<p class="flt-l">当前在线人数<span></span></p>
+							<p class="flt-l mgl-25">当前最大人数<span></span></p>
+							<p class="flt-l mgl-25">当前登录用户<span></span></p>
+						</div>
+						
+						<li class = "index-first-list mgr-25">
+							<a href="javascript:;" class="fs-14 clr-333"><span class="inbk list-icon select_icon"></span>系统服务</a>
+							<ul class = "index-second-list pdlr-10">
+								<li >
+									<a href="javascript:;" class="change-pwd fs-14 clr-333"><span class="inbk list-icon"></span>修改密码</a>
+								</li>
+								<li >
+									<a href="javascript:;" class="question fs-14 clr-333"><span class="inbk list-icon"></span>常见问题</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="suggesthistory fs-14 clr-333"><span class="inbk list-icon"></span>历史查询</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="help fs-14 clr-333"><span class="inbk list-icon"></span>帮助</a>
+								</li>
+								
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:;" class="logout  fs-14 clr-333"><span class="inbk list-icon"></span>退出</a>
+						</li>
+					</ul>
+					
+				</div>
+				
+			</div>
+			<!-- 头部导航 -->
+			<div class="nav-color">
+					<img src="resources/img/icon/nav-color.png"/>	
+					</div>
+		</div>
+		<!--正文部分-->
+		<div class="mainviewport" id="mainviewport">
+			<!-- 内容容器 -->
+			<div class="main">
+				<div class="content" id="global-content"></div>
+			</div>
+		</div>
+		<!-- 底部 -->
+		<div class="root footer" id="global-footer">
+			<div class="copyright">
+				<p class="copyright-info text-center fs-14">@2018<span class="abc-font">PICC</span>中国人民人寿保险股份</p>
+			</div>
+		</div>
+		<!-- alert弹窗容器 -->
+		<div class="global-popups" id="global-popups"></div>
+		<!-- alert弹窗模板 -->
+		<script id="global-alert" type="text/x-handlebars-template">
+			<div class="global-alert-out" id="{{id}}">
+				<div class="global-alert-in">
+					<div class="header">
+						<p class="title">{{title}}</p>
+					</div>
+					<div class="body">
+						<div class="global-alert-content">
+							<div>
+								<i class="{{icon}}"></i>
+								<div>{{{content}}}</div>
+						    </div>
+						</div>
+					</div>
+					<div class="footer {{#if cancleHide}}cancleHide{{/if}} {{#if footerHide}}footerHide{{/if}}">
+						<button class="btn-gray cancleBtn" id="{{cancleBtnId}}">{{cancleBtnText}}</button>
+						<button class="confirmBtn" id="{{confirmBtnId}}">{{confirmBtnText}}</button>
+					</div>
+				</div>
+            </div>
+		</script>
+	</body>
+<script type="text/javascript" th:src="@{/script/lib/handlebars/handlebars-v4.0.4.js}" ></script>
+<script type="text/javascript" th:src="@{/script/lib/handlebars/handlebars-jquery.js}" ></script>
+<script type="text/javascript" th:src="@{/script/config/env.config.js}" ></script>
+<script type="text/javascript" th:src="@{/script/config/menu.config.js}" ></script>
+<script type="text/javascript" th:src="@{/script/app/app.js}" ></script>
+<script type="text/javascript" th:src="@{/script/app/picc.js}" ></script>
+<script type="text/javascript" th:src="@{/script/index.js}" ></script>
+<script type="text/javascript" th:src="@{/script/lib/jquery/rem.js}" ></script>
+</html>

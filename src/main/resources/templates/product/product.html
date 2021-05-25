@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+    <link rel="stylesheet" th:href="@{/utility/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/utility/css/bootstrap-theme.css}" />
+    <link rel="stylesheet" th:href="@{/utility/css/bootstrap-table.css}" />
+    <link rel="stylesheet" th:href="@{/utility/css/style.min.css}" />
+    <link rel="stylesheet" th:href="@{/utility/css/style.min.css.map}" />
+    
+</head>
+<body>
+<div class="slideListCon">
+		<input type="text" value="" id="riskName">
+		<div class="slideListTit222"><button onclick="search()">搜索</button></div>
+</div>
+<div>
+	<div class="cp">
+		<div class="slideList slideList2" id="RiskItem_DIV">
+			<div class="slideListCon">
+				<div class="slideListTit slideListTitFocus" data-typeid="RX" id="RX_DIV">热销产品</div>
+				<div class="slideListTit" data-typeid="JY" id="JY_DIV">精英推荐</div>
+				<div class="slideListTit" data-typeid="JK" id="JK_DIV">健康险</div>
+				<div class="slideListTit" data-typeid="WN" id="WN_DIV">万能险</div>
+				<div class="slideListTit" data-typeid="SC" id="SC_DIV">我的收藏</div>
+			</div>
+		</div>
+	</div>
+	<div class="bgcF">
+		<div id="a">  </div>
+		<div id="b">  </div>
+		<div id="c">  </div>
+		<div id="d">  </div>
+	</div>
+		
+</div>
+
+	<script type="text/javascript" th:src="@{/utility/js/jquery-3.3.1.js}" ></script>
+    <script type="text/javascript" th:src="@{/product/product.js}" ></script>
+    
+</body>
+
+</html>
